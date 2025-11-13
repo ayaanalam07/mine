@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sorry Begum ❤️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(
+          rgba(255, 180, 190, 0.5),
+          rgba(238, 156, 167, 0.5)
+        ),
+        url('./image.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      text-align: center;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: clamp(50px, 10vw, 120px);
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff477e;
+      transform: rotate(45deg);
+      animation: rise 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff477e;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { top: 0; left: -10px; }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(0.8) rotate(45deg); opacity: 0; }
+    }
+
+    .message {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-size: 18px;
+      backdrop-filter: blur(5px);
+      animation: fadeIn 2s ease forwards;
+      max-width: 90%;
+      color: #000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background: #fff;
+      color: #ff477e;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 60px; }
+      .message { font-size: 16px; padding: 10px 15px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Sorry Wifey</h1>
+  <div class="message" id="msg" style="display:none;">Begum Sorry Na Maan Jayen na meri pyaari si raani guirya meri shabnam 😘</div>
+  <button id="showBtn">Show Message</button>
+
+  <script>
+    const btn = document.getElementById('showBtn');
+    const msg = document.getElementById('msg');
+
+    btn.addEventListener('click', () => {
+      msg.style.display = msg.style.display === 'none' ? 'block' : 'none';
+      btn.textContent = msg.style.display === 'none' ? 'Show Message' : 'Hide Message';
+    });
+
+    // heart animation generator
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+</body>
+</html>
